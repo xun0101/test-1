@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const inputText = prompt('text').toUpperCase()
+    const inputKey = parseInt(prompt('key'))
+
+    const encrypt = (text, key) => {
+      let result = ''
+      // 迴圈處理每個文字
+      for (let i=0;i<text.length;i++) {
+        // 取得文字 ASCII Code
+        let code = text.charCodeAt(i)
+        // 如果不是空白
+        if (code !== 32) {
+          // 計算新的 ASCII Code
+          code = (code - 65 + key) % 26 + 65
+          // 新的 ASCII 轉回文字串起來
+          result += String.fromCharCode(code)
+        } else {
+          result += ' '
+        }
+      }
+
+      return result
+    }
+
+    document.write(encrypt(inputText, inputKey))
+  </script>
+</body>
+</html>
